@@ -1,16 +1,18 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import { Link, Navigate } from 'react-router-dom';
 
 const Header = () => {
     const handleLogin=()=>{
-       console.log('working'); 
+       <Navigate to = "/login" replace={true}/>
     }
     return (
         <div className='mt-4'>
             <ButtonGroup >
-                <Button onClick={handleLogin} variant="secondary">Login</Button>
-                <Button variant="secondary">Register</Button>
+                
+                <Link to='/login' className='btn btn-success'>Login</Link> <br></br>
+                <Link to='/login' className='btn btn-success'>Register</Link>
                 
             </ButtonGroup>
         </div>
