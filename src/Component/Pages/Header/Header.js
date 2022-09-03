@@ -8,11 +8,11 @@ const Header = () => {
        <Navigate to = "/login" replace={true}/>
     }
     return (
-        <div className='mt-4'>
+        <div className='mt-4 text-center'>
             <ButtonGroup >
                 
                 <Link to='/login' className='btn btn-success'>Login</Link> <br></br>
-                <Link to='/login' className='btn btn-success'>Register</Link>
+                <Link to='/register' className='btn btn-success'>Register</Link>
                 
             </ButtonGroup>
         </div>
