@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import app from '../../../../firebase.init';
 import SharedComponent from '../../../SharedComponent/SharedComponent';
 
@@ -53,8 +53,28 @@ const Login = () => {
             const errorMassage = error.message;
             setError(errorMassage); 
         })
-        console.log(user.displayName);
+        
     }
+    //github login //
+    const handleGithubLogin=(event)=>{
+        event.preventDefault();
+        const provider = new GithubAuthProvider();
+        const auth = getAuth(app);
+        signInWithPopup(auth, provider)
+        .then(result=>{
+            const user= result.user;
+            setUser(user);
+            console.log(user);
+        })
+        .catch(error=>{
+            const errorMassage = error.message;
+            setError(errorMassage);
+        })
+
+        
+
+    }
+
     return (
         <div>
             <h1 className='text-center'>Login Now</h1>
@@ -84,7 +104,7 @@ const Login = () => {
 
             <div className='text-center'>
                 <button onClick={handleGoogleLogin} >Google Login</button>
-                <button >Github Login</button>
+                <button onClick={handleGithubLogin}>Github Login</button>
             </div>
         </div>
     );
